@@ -48,3 +48,12 @@ const person = new Person({
 //Save it
 person.save();
 
+Fruit.find()
+    .then(function (fruits) {
+        fruits.forEach(function (fruit) {
+            console.log(fruit.name);
+        });
+    })
+    .catch(function (err) {
+        console.log(err);
+    });
