@@ -10,9 +10,17 @@ async function main() {
 
   
 //create a SCHEMA that sets out the fields each document will have and their datatypes
+
 const fruitSchema = new mongoose.Schema ({
-	name: String,
-	rating: Number,
+	name: { 
+    type: String,
+    required: [true, "Please enter a fruit name"]
+  },
+	rating: {
+    type: Number,
+    min: 1,
+    max: 10
+  },
 	review: String
 })
  
@@ -20,9 +28,10 @@ const fruitSchema = new mongoose.Schema ({
 const Fruit = new mongoose.model ("Fruit", fruitSchema)
  
 //create a DOCUMENT
+
 const fruit = new Fruit ({
 	name: "Apple",
-	rating: 7,
+	rating: 10,
 	review: "Great!"
 })
  
@@ -46,7 +55,7 @@ const person = new Person({
 });
  
 //Save it
-person.save();
+// person.save();
 
 Fruit.find()
     .then(function (fruits) {
