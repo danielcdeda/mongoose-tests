@@ -57,12 +57,21 @@ const person = new Person({
 //Save it
 // person.save();
 
+Fruit.updateOne({ _id: "646e8a37538657e54a0aab29" }, { name: "Deez" })
+  .then((result) => {
+    console.log(result);
+  })
+  .catch((err) => {
+    console.log(err);
+  });
+ 
 Fruit.find()
-    .then(function (fruits) {
-        fruits.forEach(function (fruit) {
-            console.log(fruit.name);
-        });
-    })
-    .catch(function (err) {
-        console.log(err);
+  .then((fruits) => {
+    fruits.forEach((fruits) => {
+      console.log(fruits.id, ":", fruits.name);
     });
+  })
+  .catch(function (err) {
+    console.log(err);
+  })
+  .finally(() => mongoose.connection.close());
